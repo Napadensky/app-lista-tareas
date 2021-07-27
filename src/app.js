@@ -1,24 +1,17 @@
-const {inquirerMenu, pause} = require('./helpers/inquirer');
-const {Tarea,Tareas} = require('./models');
+const { inquirerMenu, pause } = require('./helpers/inquirer');
+const { menuControler } = require('./controller/menuControler');
 
-let opt = ''
+let option = ''
 
 const main = async () => {
 
   do {
-    // console.clear()
-    // opt = await inquirerMenu()
-
-    const tarea = new Tarea('Comprar comida')
-    console.log(tarea);
-    
-    const tareas = new Tareas()
-    tareas._listado[tarea.id] = tarea
-    console.log(tareas);
-
+    console.clear()
+    option = await inquirerMenu()
+    await menuControler[option]()
 
     await pause()
-  } while (opt !== '0')
+  } while (option !== '0')
 
 }
 
