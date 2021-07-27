@@ -1,9 +1,10 @@
-const mostrarMenu = require('./helpers/mensajes');
+const {showMenu,pause} = require('./helpers/mensajes');
 
 console.clear()
 
 const main = async () => {
-  mostrarMenu(0)
+  await showMenu()
+  await pause()
 }
 
 main()

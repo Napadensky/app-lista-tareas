@@ -1,25 +1,41 @@
+const interface = require('readline').createInterface({ 'input': process.stdin, 'output': process.stdout })
 require('colors');
 
-const mostrarMenu = function (option) {
-  const title = `
-=========================
-  Seleccione una opción
-=========================`
-  const options = {
-    '1.': 'Crear tarea',
-    '2.': 'Listar tarea',
-    '3.': 'Listar tareas completadas',
-    '4.': 'Listar tareas pendiente',
-    '5.': 'Completar tarea(s)',
-    '6.': 'Borrar tarea',
-    '0.': 'Salir'
-  }
+// Menu
+const showMenu = async (option) => {
 
-  console.log(title.replace(/=/g, '='.green));
-  for (let item in options) {
+  const menu = `
+  ${'========================='.green}
+    Seleccione una opción
+  ${'========================='.green}
+  ${'1.'.green} Crear tarea
+  ${'2.'.green} Listar tarea
+  ${'3.'.green} Listar tareas completadas
+  ${'4.'.green} Listar tareas pendiente
+  ${'5.'.green} Completar tarea(s)
+  ${'6.'.green} Borrar tarea
+  ${'0.'.green} Salir
+  `;
 
-    console.log(`${item.green}  ${option == item ? options[item].blue : options[item]}`);
-  }
+  console.log(menu);
+
+  return new Promise((resolve, reject) => {
+    interface.question('\nSeleccione una opción: ', (opt) => {
+      console.log({ opt });
+      interface.close();
+      resolve(opt);
+    });
+  })
 }
 
-module.exports = mostrarMenu
+// Pause
+const pause = () => {
+  return new Promise((resolve, reject) => {
+    interface.question(`\nPresione ${'ENTER'.green} para continuar...\n`, (answer) => {
+      interface.close()
+      resolve()
+    })
+  })
+}
+
+module.exports = { showMenu, pause }
