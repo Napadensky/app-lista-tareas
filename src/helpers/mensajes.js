@@ -1,10 +1,10 @@
-const interface = require('readline').createInterface({ 'input': process.stdin, 'output': process.stdout })
 require('colors');
 
 // Menu
-const showMenu = async (option) => {
-
-  const menu = `
+const showMenu = () => {
+  const interface = require('readline').createInterface({ 'input': process.stdin, 'output': process.stdout })
+  return new Promise(resolve => {
+    const menu = `
   ${'========================='.green}
     Seleccione una opción
   ${'========================='.green}
@@ -17,9 +17,8 @@ const showMenu = async (option) => {
   ${'0.'.green} Salir
   `;
 
-  console.log(menu);
+    console.log(menu);
 
-  return new Promise((resolve, reject) => {
     interface.question('\nSeleccione una opción: ', (opt) => {
       console.log({ opt });
       interface.close();
@@ -30,8 +29,9 @@ const showMenu = async (option) => {
 
 // Pause
 const pause = () => {
-  return new Promise((resolve, reject) => {
-    interface.question(`\nPresione ${'ENTER'.green} para continuar...\n`, (answer) => {
+  const interface = require('readline').createInterface({ 'input': process.stdin, 'output': process.stdout })
+  return new Promise(resolve => {
+    interface.question(`\nPresione ${'ENTER'.green} para continuar...\n`, () => {
       interface.close()
       resolve()
     })
