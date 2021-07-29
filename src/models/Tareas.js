@@ -12,7 +12,12 @@ class Tareas {
     this._listado[tarea.id] = tarea
   }
   getTareas() {
-    return this._listado
+    const list = []
+    Object.keys(this._listado).forEach(id => {
+      const tarea = this._listado[id]
+      list.push(tarea)
+    })
+    return list
   }
 
 }
