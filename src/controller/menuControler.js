@@ -6,7 +6,7 @@ const menuControler = {
   '3': () => Action.listComplete(),
   '4': () => Action.listPending(),
   '5': () => Action.check(),
-  '6': () => Action.delete(),
+  '6': () => Action.recuperar(),
   '0': () => { },
 }
 
