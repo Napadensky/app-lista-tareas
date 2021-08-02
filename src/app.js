@@ -4,11 +4,10 @@ const {
   listadoTareasBorrar, // no es de app
   inquirerMenu,
   confirmar, // no es de app
-  pause 
+  pause
 } = require('./helpers/inquirer');
 const { saveFile, loadFile } = require('./helpers/guardarArchivo');
 const { Tareas } = require('./models');
-
 
 const main = async () => {
   let option = ''

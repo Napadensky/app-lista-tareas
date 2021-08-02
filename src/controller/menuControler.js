@@ -1,4 +1,4 @@
-const {Action} = require('../helpers/Action');
+const { Action } = require('../helpers/Action');
 
 const menuControler = {
   '1': () => Action.agregar(),
