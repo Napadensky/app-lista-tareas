@@ -1,18 +1,23 @@
 const { menuControler } = require('./controller/menuControler');
 const { inquirerMenu, pause } = require('./helpers/inquirer');
-const { loadFile } = require('./helpers/guardarArchivo');
+const { saveFile ,loadFile } = require('./helpers/guardarArchivo');
+const { Tareas } = require('./models');
 
 
 const main = async () => {
   let option = ''
-  loadFile();
+
+  const tareasDB = loadFile();
+  if (tareasDB) Tareas.cargarTareasFromArray(tareasDB);
+
   await pause()
 
   do {
     console.clear()
-    
+
     option = await inquirerMenu()
     await menuControler[option]()
+    saveFile(Tareas.listadoArr)
     await pause()
 
   } while (option !== '0')

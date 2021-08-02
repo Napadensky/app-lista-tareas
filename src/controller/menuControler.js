@@ -1,10 +1,10 @@
 const {Action} = require('../helpers/Action');
 
 const menuControler = {
-  '1': () => Action.add(),
-  '2': () => Action.list(),
-  '3': () => Action.listComplete(),
-  '4': () => Action.listPending(),
+  '1': () => Action.agregar(),
+  '2': () => Action.completo(),
+  '3': () => Action.completadas(),
+  '4': () => Action.pendientes(),
   '5': () => Action.check(),
   '6': () => Action.recuperar(),
   '0': () => { },

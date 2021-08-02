@@ -1,20 +1,22 @@
 const { Tareas } = require('../models');
 const { leerInput } = require('./inquirer');
-const  {loadFile,saveFile}  = require('./guardarArchivo');
+// const  {loadFile,saveFile}  = require('./guardarArchivo');
 
 class Action {
-  static list() {
-    const list = Tareas.getTareas()
-    console.log(list);
-    saveFile(list)
-  }
-  static async add() {
-    const desc = await leerInput('Descripcion: ')
+  static async agregar() {
+    const desc = await leerInput('Descripción:');
     Tareas.crearTarea(desc);
   }
-  static recuperar(){
-    loadFile()
+  static completo() {
+    Tareas.listadoCompleto();
   }
+  static completadas(){
+    Tareas.listarPendientesCompletadas(true);
+  }
+  static pendientes(){
+    Tareas.listarPendientesCompletadas(false);
+  }
+
 }
 
 module.exports = { Action };
