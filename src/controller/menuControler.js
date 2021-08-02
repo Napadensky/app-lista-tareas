@@ -6,7 +6,7 @@ const menuControler = {
   '3': () => Action.completadas(),
   '4': () => Action.pendientes(),
   '5': () => Action.check(),
-  '6': () => Action.recuperar(),
+  '6': () => Action.boorar(),
   '0': () => { },
 }
 

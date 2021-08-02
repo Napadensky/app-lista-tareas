@@ -1,6 +1,12 @@
 const { menuControler } = require('./controller/menuControler');
-const { inquirerMenu, pause } = require('./helpers/inquirer');
-const { saveFile ,loadFile } = require('./helpers/guardarArchivo');
+const {
+  mostrarListadoChecklist, // no es de app
+  listadoTareasBorrar, // no es de app
+  inquirerMenu,
+  confirmar, // no es de app
+  pause 
+} = require('./helpers/inquirer');
+const { saveFile, loadFile } = require('./helpers/guardarArchivo');
 const { Tareas } = require('./models');
 
 

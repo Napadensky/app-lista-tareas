@@ -1,6 +1,8 @@
 const { Tareas } = require('../models');
-const { leerInput } = require('./inquirer');
-// const  {loadFile,saveFile}  = require('./guardarArchivo');
+const { mostrarListadoChecklist,
+  listadoTareasBorrar,
+  inquirerMenu,
+  confirmar, leerInput } = require('./inquirer');
 
 class Action {
   static async agregar() {
@@ -10,13 +12,26 @@ class Action {
   static completo() {
     Tareas.listadoCompleto();
   }
-  static completadas(){
+  static completadas() {
     Tareas.listarPendientesCompletadas(true);
   }
-  static pendientes(){
+  static pendientes() {
     Tareas.listarPendientesCompletadas(false);
+  }
+  static async check() {
+    const ids = await mostrarListadoChecklist(Tareas.listadoArr);
+    Tareas.toggleCompletadas(ids);
+  }
+  static async boorar() {
+    const id = await listadoTareasBorrar(Tareas.listadoArr);
+    if (id !== '0') {
+      const ok = await confirmar('¿Está seguro?');
+      if (ok) {
+        Tareas.borrarTarea(id);
+        console.log('Tarea borrada');
+      }
+    }
   }
 
 }
-
 module.exports = { Action };
